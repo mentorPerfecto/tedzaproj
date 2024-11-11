@@ -1,0 +1,25 @@
+{
+  "DurationType":[
+
+    {
+      "name":"Year",
+      "key":"yearly"
+
+    },
+    {
+      "name":"Month",
+      "key":"monthly"
+
+
+    },
+    {
+      "name":"Day",
+      "key":"daily"
+    },
+    {
+      "name":"Week",
+      "key":"weekly"
+    }
+  ]
+
+}
