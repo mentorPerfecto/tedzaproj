@@ -5,7 +5,7 @@ import 'package:ecommerce/repository/services/api/api_service.dart';
 
 class AuthBackend extends ApiService {
 
-  Future<dynamic> signInAdmin({
+  Future<dynamic> signIn({
     required String email,
     required String password,
   }) async {

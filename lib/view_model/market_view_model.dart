@@ -95,7 +95,7 @@ class MarketPlaceViewModel extends ChangeNotifier {
           .fetchListings(
         maxPrice: _maxAmountController.text.toString(),
         minPrice: _minAmountController.text.toString(),
-        title: _minAmountController.text.toString(),
+        title: _searchController.text.toString(),
         categoryId: selectedListingType,
       )
           .then((value) async {
@@ -120,45 +120,45 @@ class MarketPlaceViewModel extends ChangeNotifier {
     }
   }
 
-  Future<dynamic> getMoreSearchProperties() async {
-    /// change the state of list pagination loader
-    _isGettingSearchPage = true;
-    notifyListeners();
-    logger.f("Call Page $_searchPage");
-    await listingService
-        .fetchListings(
-      page: _searchPage,
-      // searchVal: _searchController.text.toLowerCase(),
-    )
-        .then((value) {
-      if (value != null) {
-        final decodedResponse = jsonDecode(value.toString());
-        //
-        // if (decodedResponse['status'].toString() == 'true') {
-        //   _searchPropertiesResponse = ListingsResponseModel.fromJson(decodedResponse);
-        //   _searchProperties
-        //       .addAll(_searchPropertiesResponse!.data!.listings!.toList());
-        //   notifyListeners();
-        // }
-        // // check page count if its more than one, on every successful data fetch
-        // // update page count on every successful data fetch
-        // if (int.parse(_searchPropertiesResponse!.data!.lastPage.toString()) > _searchPage *10 ) {
-        //   _searchPage++;
-        //   _setCanLoadMoreSearchProperties(status: true);
-        // } else {
-        //   _setCanLoadMoreSearchProperties(status: false);
-        // }
-        notifyListeners();
-      }
-    }).whenComplete(() {
-      _isGettingSearchPage = false;
-      notifyListeners();
-    }).onError((error, stackTrace) {
-      logger
-        ..e(error)
-        ..e(stackTrace);
-    });
-  }
+  // Future<dynamic> getMoreSearchProperties() async {
+  //   /// change the state of list pagination loader
+  //   _isGettingSearchPage = true;
+  //   notifyListeners();
+  //   logger.f("Call Page $_searchPage");
+  //   await listingService
+  //       .fetchListings(
+  //     page: _searchPage,
+  //     // searchVal: _searchController.text.toLowerCase(),
+  //   )
+  //       .then((value) {
+  //     if (value != null) {
+  //       final decodedResponse = jsonDecode(value.toString());
+  //       //
+  //       // if (decodedResponse['status'].toString() == 'true') {
+  //       //   _searchPropertiesResponse = ListingsResponseModel.fromJson(decodedResponse);
+  //       //   _searchProperties
+  //       //       .addAll(_searchPropertiesResponse!.data!.listings!.toList());
+  //       //   notifyListeners();
+  //       // }
+  //       // // check page count if its more than one, on every successful data fetch
+  //       // // update page count on every successful data fetch
+  //       // if (int.parse(_searchPropertiesResponse!.data!.lastPage.toString()) > _searchPage *10 ) {
+  //       //   _searchPage++;
+  //       //   _setCanLoadMoreSearchProperties(status: true);
+  //       // } else {
+  //       //   _setCanLoadMoreSearchProperties(status: false);
+  //       // }
+  //       notifyListeners();
+  //     }
+  //   }).whenComplete(() {
+  //     _isGettingSearchPage = false;
+  //     notifyListeners();
+  //   }).onError((error, stackTrace) {
+  //     logger
+  //       ..e(error)
+  //       ..e(stackTrace);
+  //   });
+  // }
 
 
   ///Method to get single listing by Id

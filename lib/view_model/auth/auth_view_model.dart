@@ -92,7 +92,7 @@ class AuthViewModel extends ChangeNotifier {
       );
       notifyListeners();
       await authService
-          .signInAdmin(
+          .signIn(
         email: _loginEmailController.text.toLowerCase(),
         password: _loginPwdController.text,
       )
@@ -145,7 +145,7 @@ class AuthViewModel extends ChangeNotifier {
       );
       notifyListeners();
       await authService
-          .signInAdmin(
+          .signIn(
         email: email.toLowerCase(),
         password: password,
       )

@@ -51,7 +51,7 @@ class ApiService extends ApiConstants with RetryFunc {
       logger.e(error.response!.data);
       showToast(
         msg: UtilFunctions.capitalizeAllWord(
-            error.response!.data['message'][0] ?? "Something went wrong"),
+            error.response!.data['message'] ?? "Something went wrong"),
         isError: true,
       );
     } on FormatException catch (error) {
@@ -463,7 +463,7 @@ class ApiService extends ApiConstants with RetryFunc {
           status = responseJson['status'] as String;
           message = responseJson['message'];
           if (message != null) {
-            showToast(msg: '$status\n$message', isError: true);
+            showToast(msg: '$message', isError: true);
           }
         }
 
